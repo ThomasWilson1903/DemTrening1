@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         
-        Title="" Height="450" Width="800" FontSize="20">
+        Title="" Height="450" Width="400" MinHeight="450" MinWidth="400" FontSize="20">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -19,13 +19,13 @@
     </Window.Resources>
 
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-        <StackPanel>
-            <TextBox x:Name="tbColbach"/>
-            <ComboBox x:Name="cbInghradient" Margin="0 15" materialDesign:HintAssist.Hint="Инградиент"/>
-
+        <StackPanel Width="250">
+            <ComboBox x:Name="cbColba" Margin="0 15" DisplayMemberPath="NumberCones" materialDesign:HintAssist.Hint="Колба"/>
             <ComboBox x:Name="cbWorker" DisplayMemberPath="SurNameWorker" materialDesign:HintAssist.Hint="Сотрудник"/>
+            <ComboBox x:Name="cbInghradient" Margin="0 15" DisplayMemberPath="Name" materialDesign:HintAssist.Hint="Инградиент"/>
+
             
-            <Button x:Name="btSave" Margin="0 15" Click="clAddSave">
+            <Button x:Name="btSave" Margin="0 15" materialDesign:ButtonAssist.CornerRadius="25" Height="40" Click="clAddSave">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Add" Foreground="#FFFFFF"/>

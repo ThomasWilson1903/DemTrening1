@@ -1,5 +1,6 @@
 ﻿using DemTrening1.DataBase;
 using DemTrening1.DataBase.Entity;
+using DemTrening1.Windows;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using System;
@@ -41,7 +42,8 @@ namespace DemTrening1
 
         private void clOpenAddWindowIngragient(object sender, RoutedEventArgs e)
         {
-            
+            new wdAddIngradient().ShowDialog();
+            select();
         }
     }
 }

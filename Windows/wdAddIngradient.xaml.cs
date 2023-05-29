@@ -21,8 +21,9 @@ namespace DemTrening1.Windows
     /// </summary>
     public partial class wdAddIngradient : Window
     {
-        List<Cone> cone;//создаем лист для дальнейшего использования 
         List<Worker> worker;//создаем лист для дальнейшего использования 
+        List<Ingredient> ingredients;//создаем лист для дальнейшего использования 
+        List<Cone> cone;//создаем лист для дальнейшего использования 
 
         public wdAddIngradient()
         {
@@ -32,21 +33,48 @@ namespace DemTrening1.Windows
 
             worker = EfModels.init().Workers.ToList();//заполняем лист данными из бд
 
+            ingredients = EfModels.init().Ingredients.ToList();//заполняем лист данными из бд
 
+            cone = EfModels.init().Cones.ToList();//заполняем лист данными из бд
+
+            cbColba.ItemsSource = cone;
+            cbInghradient.ItemsSource = ingredients;
             cbWorker.ItemsSource = worker;
         }
 
         private void clAddSave(object sender, RoutedEventArgs e)
         {
-
-
-
-            /*EfModels.init().Add(new IngredientsHasCone
+            if (cbColba.SelectedItem != null)
             {
-                Date = DateOnly.FromDateTime(DateTime.Now),
-                Time = TimeOnly.FromDateTime(DateTime.Now),
-                Worker =
-            });*/
+                if (cbWorker.SelectedItem != null)
+                {
+                    if (cbInghradient.SelectedItem != null)
+                    {
+
+                        EfModels.init().Add(new IngredientsHasCone
+                        {
+                            Date = DateOnly.FromDateTime(DateTime.Now),
+                            Time = TimeOnly.FromDateTime(DateTime.Now),
+                            Worker = worker[cbWorker.SelectedIndex].Idworker,
+                            IngredientsIdingredients = ingredients[cbInghradient.SelectedIndex].Idingredients,
+                            ConesIdCones = cone[cbColba.SelectedIndex].IdCones,
+
+                        });
+                        Close();
+                    }
+                    else
+                        cbInghradient.BorderBrush = Brushes.Red;
+
+                }
+                else
+                {
+                    cbWorker.BorderBrush = Brushes.Red;
+                }
+            }
+            else
+                    cbColba.BorderBrush = Brushes.Red;
+
+
         }
     }
 }
