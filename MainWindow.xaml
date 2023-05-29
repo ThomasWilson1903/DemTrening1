@@ -32,7 +32,7 @@
             </Button.Content>
         </Button>
         <StackPanel Orientation="Horizontal">
-            <TextBox Width="400" VerticalAlignment="Center" Margin="10 0 0 0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Поиск" />
+            <TextBox Width="400" VerticalAlignment="Center" x:Name="tbSerch" Margin="10 0 0 0" TextChanged="tcSerch" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Поиск" />
             <ComboBox x:Name="cbColab" materialDesign:HintAssist.Hint="Колба" Margin="10 0 0 0" Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="16"/>
         </StackPanel>
 

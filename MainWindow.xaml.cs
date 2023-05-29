@@ -25,6 +25,7 @@ namespace DemTrening1
     /// </summary>
     public partial class MainWindow : Window
     {
+        IEnumerable<IngredientsHasCone> ingredients;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,7 +34,7 @@ namespace DemTrening1
 
         void select()
         {
-            IEnumerable<IngredientsHasCone> ingredients = EfModels.init().IngredientsHasCones.Include(p=>p.IngredientsIdingredientsNavigation).
+            ingredients = EfModels.init().IngredientsHasCones.Include(p=>p.IngredientsIdingredientsNavigation).
                 Include(p=>p.WorkerNavigation).Include(p=>p.ConesIdConesNavigation).ToList();
 
             dgMain.ItemsSource = ingredients;
@@ -44,6 +45,12 @@ namespace DemTrening1
         {
             new wdAddIngradient().ShowDialog();
             select();
+        }
+
+        private void tcSerch(object sender, TextChangedEventArgs e)
+        {
+            ingredients.Where(p => p.Date.ToString().Contains(tbSerch.Text));
+            dgMain.ItemsSource = ingredients;
         }
     }
 }

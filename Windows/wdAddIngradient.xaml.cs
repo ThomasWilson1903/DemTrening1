@@ -60,6 +60,7 @@ namespace DemTrening1.Windows
                             ConesIdCones = cone[cbColba.SelectedIndex].IdCones,
 
                         });
+                        EfModels.init().SaveChanges();
                         Close();
                     }
                     else
@@ -72,7 +73,7 @@ namespace DemTrening1.Windows
                 }
             }
             else
-                    cbColba.BorderBrush = Brushes.Red;
+                cbColba.BorderBrush = Brushes.Red;
 
 
         }
