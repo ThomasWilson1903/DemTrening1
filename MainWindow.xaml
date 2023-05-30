@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DemTrening1"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="" Height="450" Width="800" MinHeight="450" MinWidth="800" FontSize="20">
+        Title="" Height="450" Width="800" MinHeight="450" MinWidth="800" FontSize="20" ResizeMode="NoResize">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -33,7 +33,7 @@
         </Button>
         <StackPanel Orientation="Horizontal">
             <TextBox Width="400" VerticalAlignment="Center" x:Name="tbSerch" Margin="10 0 0 0" TextChanged="tcSerch" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Поиск" />
-            <ComboBox x:Name="cbColab" materialDesign:HintAssist.Hint="Колба" Margin="10 0 0 0" Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="16"/>
+            <ComboBox x:Name="cbColab" SelectionChanged="scFilter" DisplayMemberPath="NumberCones" materialDesign:HintAssist.Hint="Колба" Margin="10 0 0 0" Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="16"/>
         </StackPanel>
 
         <DataGrid x:Name="dgMain" AutoGenerateColumns="False" IsReadOnly="True" Style="{StaticResource MaterialDesignDataGrid}" Margin="0,4,0,0" Grid.Row="1"  >

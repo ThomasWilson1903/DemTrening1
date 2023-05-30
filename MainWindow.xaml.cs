@@ -1,4 +1,5 @@
-﻿using DemTrening1.DataBase;
+﻿
+using DemTrening1.DataBase;
 using DemTrening1.DataBase.Entity;
 using DemTrening1.Windows;
 using Microsoft.EntityFrameworkCore;
@@ -26,16 +27,27 @@ namespace DemTrening1
     public partial class MainWindow : Window
     {
         IEnumerable<IngredientsHasCone> ingredients;
+        List<Cone> cones = new List<Cone>();
         public MainWindow()
         {
             InitializeComponent();
+            cones = EfModels.init().Cones.ToList();
+            cbColab.ItemsSource = cones;
+
+            cones.Insert(0, new IngredientsHasCone());
+
+            cbColab.SelectedIndex = 0;
             select();
-        }
+        }//Server=cfif31.ru;Port=3306;User ID=ISPr22-33_BirukovAA;Password=ISPr22-33_BirukovAA;Database=ISPr22-33_BirukovAA_DemTrening1;Character Set=utf8s
 
         void select()
         {
-            ingredients = EfModels.init().IngredientsHasCones.Include(p=>p.IngredientsIdingredientsNavigation).
-                Include(p=>p.WorkerNavigation).Include(p=>p.ConesIdConesNavigation).ToList();
+            ingredients = EfModels.init().IngredientsHasCones.Include(p => p.IngredientsIdingredientsNavigation).
+                Include(p => p.WorkerNavigation).Include(p => p.ConesIdConesNavigation).ToList();
+            
+            
+                ingredients = ingredients.Where(p => p.ConesIdCones == (cbColab.SelectedIndex + 1));
+            
 
             dgMain.ItemsSource = ingredients;
 
@@ -49,8 +61,13 @@ namespace DemTrening1
 
         private void tcSerch(object sender, TextChangedEventArgs e)
         {
-            ingredients.Where(p => p.Date.ToString().Contains(tbSerch.Text));
+            ingredients = ingredients.Where(p => p.IngredientsIdingredientsNavigation.Name.ToString().Contains(tbSerch.Text));
             dgMain.ItemsSource = ingredients;
+        }
+
+        private void scFilter(object sender, SelectionChangedEventArgs e)
+        {
+            select();
         }
     }
 }

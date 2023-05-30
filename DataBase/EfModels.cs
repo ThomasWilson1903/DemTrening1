@@ -10,6 +10,7 @@ namespace DemTrening1.DataBase
     {
 
         private static EfModels _instance;
+
         public static EfModels init()
         {
             if(_instance == null)
@@ -18,7 +19,6 @@ namespace DemTrening1.DataBase
             }
             return _instance;
         }
-
 
         public EfModels()
         {
@@ -72,10 +72,6 @@ namespace DemTrening1.DataBase
 
             modelBuilder.Entity<IngredientsHasCone>(entity =>
             {
-                entity.HasKey(e => new { e.IngredientsIdingredients, e.ConesIdCones })
-                    .HasName("PRIMARY")
-                    .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
-
                 entity.ToTable("ingredients_has_Cones");
 
                 entity.HasIndex(e => e.ConesIdCones, "fk_ingredients_has_Cones_Cones1_idx");
@@ -84,11 +80,11 @@ namespace DemTrening1.DataBase
 
                 entity.HasIndex(e => e.IngredientsIdingredients, "fk_ingredients_has_Cones_ingredients_idx");
 
-                entity.Property(e => e.IngredientsIdingredients)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("ingredients_idingredients");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.ConesIdCones).HasColumnName("Cones_idCones");
+
+                entity.Property(e => e.IngredientsIdingredients).HasColumnName("ingredients_idingredients");
 
                 entity.Property(e => e.Time).HasColumnType("time");
 
