@@ -63,6 +63,7 @@ namespace DemTrening1.Windows
                         {
                             EfModels.init().Add(IngredientsHasCone);
                         }
+
                         if (IngredientsHasCone.Id != null)
                         {
                             EfModels.init().Update(IngredientsHasCone);
