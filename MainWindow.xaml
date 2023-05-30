@@ -11,7 +11,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Blue" SecondaryColor="Red"/>
+                <materialDesign:BundledTheme BaseTheme="Light" PrimaryColor="Blue" SecondaryColor="Green"/>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -31,6 +31,12 @@
                 </StackPanel>
             </Button.Content>
         </Button>
+
+
+
+
+
+
         <StackPanel Orientation="Horizontal">
             <TextBox Width="400" VerticalAlignment="Center" x:Name="tbSerch" Margin="10 0 0 0" TextChanged="tcSerch" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="Поиск" />
             <ComboBox x:Name="cbColab" SelectionChanged="scFilter" DisplayMemberPath="NumberCones" materialDesign:HintAssist.Hint="Колба" Margin="10 0 0 0" Style="{StaticResource MaterialDesignOutlinedComboBox}" FontSize="16"/>
@@ -47,6 +53,31 @@
                 <DataGridTextColumn Header="Время" CanUserReorder="False" Width="auto" Binding="{Binding Time}"/>
 
                 <DataGridTextColumn Header="Фамилия" CanUserReorder="False" Width="*" Binding="{Binding WorkerNavigation.SurNameWorker}"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+
+                                <Button Click="clEdit" Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}">
+                                    <Button.Content>
+                                        <materialDesign:PackIcon Kind="Edit" Foreground="#FFFFFF"/>
+                                    </Button.Content>
+                                </Button>
+                                
+                                <Button Click="clDel" Margin="5 0 0 0" BorderBrush="Transparent" Background="Red" Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}">
+                                    <Button.Content>
+                                        <materialDesign:PackIcon Kind="Delete" Foreground="#FFFFFF"/>
+                                    </Button.Content>
+                                </Button>
+                                
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

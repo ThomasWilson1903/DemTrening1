@@ -25,10 +25,14 @@ namespace DemTrening1.Windows
         List<Worker> worker;//создаем лист для дальнейшего использования 
         List<Ingredient> ingredients;//создаем лист для дальнейшего использования 
         List<Cone> cone;//создаем лист для дальнейшего использования 
+        IngredientsHasCone IngredientsHasCone;
 
-        public wdAddIngradient()
+        public wdAddIngradient(IngredientsHasCone ingredientsHasCone)
         {
+
+            this.IngredientsHasCone = ingredientsHasCone;
             InitializeComponent();
+            DataContext = IngredientsHasCone;
             cone = EfModels.init().Cones.ToList();
 
 
@@ -47,20 +51,23 @@ namespace DemTrening1.Windows
         {
             if (cbColba.SelectedItem != null)
             {
+                IngredientsHasCone.Date = DateOnly.FromDateTime(DateTime.Now);
+                IngredientsHasCone.Time = TimeOnly.FromDateTime(DateTime.Now);
+
+
                 if (cbWorker.SelectedItem != null)
                 {
                     if (cbInghradient.SelectedItem != null)
                     {
-
-                        EfModels.init().Add(new IngredientsHasCone
+                        if (IngredientsHasCone.Id == null)
                         {
-                            Date = DateOnly.FromDateTime(DateTime.Now),
-                            Time = TimeOnly.FromDateTime(DateTime.Now),
-                            Worker = worker[cbWorker.SelectedIndex].Idworker,
-                            IngredientsIdingredients = ingredients[cbInghradient.SelectedIndex].Idingredients,
-                            ConesIdCones = cone[cbColba.SelectedIndex].IdCones,
+                            EfModels.init().Add(IngredientsHasCone);
+                        }
+                        if (IngredientsHasCone.Id != null)
+                        {
+                            EfModels.init().Update(IngredientsHasCone);
 
-                        });
+                        }
                         EfModels.init().SaveChanges();
                         Close();
                     }

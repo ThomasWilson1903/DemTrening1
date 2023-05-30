@@ -20,9 +20,9 @@
 
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
         <StackPanel Width="250">
-            <ComboBox x:Name="cbColba" Margin="0 15" DisplayMemberPath="NumberCones" materialDesign:HintAssist.Hint="Колба"/>
-            <ComboBox x:Name="cbWorker" DisplayMemberPath="SurNameWorker" materialDesign:HintAssist.Hint="Сотрудник"/>
-            <ComboBox x:Name="cbInghradient" Margin="0 15" DisplayMemberPath="Name" materialDesign:HintAssist.Hint="Инградиент"/>
+            <ComboBox x:Name="cbColba" SelectedItem="{Binding ConesIdConesNavigation}" Margin="0 15" DisplayMemberPath="NumberCones" materialDesign:HintAssist.Hint="Колба"/>
+            <ComboBox x:Name="cbWorker" SelectedItem="{Binding WorkerNavigation}" DisplayMemberPath="SurNameWorker" materialDesign:HintAssist.Hint="Сотрудник"/>
+            <ComboBox x:Name="cbInghradient" SelectedItem="{Binding IngredientsIdingredientsNavigation}" Margin="0 15" DisplayMemberPath="Name" materialDesign:HintAssist.Hint="Инградиент"/>
 
             
             <Button x:Name="btSave" Margin="0 15" materialDesign:ButtonAssist.CornerRadius="25" Height="40" Click="clAddSave">

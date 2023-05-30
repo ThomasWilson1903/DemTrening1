@@ -28,6 +28,7 @@ namespace DemTrening1
     {
         IEnumerable<IngredientsHasCone> ingredients;
         List<Cone> cones = new List<Cone>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,19 +41,17 @@ namespace DemTrening1
         void select()
         {
             ingredients = EfModels.init().IngredientsHasCones.Include(p => p.IngredientsIdingredientsNavigation).
-                Include(p => p.WorkerNavigation).Include(p => p.ConesIdConesNavigation).ToList();
-            
-            
-                ingredients = ingredients.Where(p => p.ConesIdCones == (cbColab.SelectedIndex + 1));
-            
+            Include(p => p.WorkerNavigation).Include(p => p.ConesIdConesNavigation).ToList();
 
+
+            ingredients = ingredients.Where(p => p.ConesIdCones == (cbColab.SelectedIndex + 1));
             dgMain.ItemsSource = ingredients;
 
         }
 
         private void clOpenAddWindowIngragient(object sender, RoutedEventArgs e)
         {
-            new wdAddIngradient().ShowDialog();
+            new wdAddIngradient(new IngredientsHasCone()).ShowDialog();
             select();
         }
 
@@ -64,6 +63,24 @@ namespace DemTrening1
 
         private void scFilter(object sender, SelectionChangedEventArgs e)
         {
+            select();
+        }
+
+        private void clDel(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                IngredientsHasCone del = (sender as Button).DataContext as IngredientsHasCone;
+                EfModels.init().Remove(del);
+                EfModels.init().SaveChanges();
+                select();
+            }
+        }
+
+        private void clEdit(object sender, RoutedEventArgs e)
+        {
+            IngredientsHasCone edit = (sender as Button).DataContext as IngredientsHasCone;
+            new wdAddIngradient(edit).ShowDialog();
             select();
         }
     }
