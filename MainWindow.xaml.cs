@@ -33,9 +33,6 @@ namespace DemTrening1
             InitializeComponent();
             cones = EfModels.init().Cones.ToList();
             cbColab.ItemsSource = cones;
-
-            cones.Insert(0, new IngredientsHasCone());
-
             cbColab.SelectedIndex = 0;
             select();
         }//Server=cfif31.ru;Port=3306;User ID=ISPr22-33_BirukovAA;Password=ISPr22-33_BirukovAA;Database=ISPr22-33_BirukovAA_DemTrening1;Character Set=utf8s

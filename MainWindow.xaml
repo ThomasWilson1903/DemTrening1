@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DemTrening1"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="" Height="450" Width="800" MinHeight="450" MinWidth="800" FontSize="20" ResizeMode="NoResize">
+        Title="" Height="450" Width="800" MinHeight="450" MinWidth="800" FontSize="20">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -23,7 +23,7 @@
             <RowDefinition Height="351*"/>
         </Grid.RowDefinitions>
 
-        <Button x:Name="btAdd" Width="150" Click="clOpenAddWindowIngragient" Height="40" VerticalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="20" HorizontalAlignment="Left" Margin="610,0,0,0">
+        <Button x:Name="btAdd" Width="150" Click="clOpenAddWindowIngragient" Height="40" VerticalAlignment="Center" materialDesign:ButtonAssist.CornerRadius="20" HorizontalAlignment="Right" Margin="0 0 20 0 ">
             <Button.Content>
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Foreground="#FFFFFF" Kind="Add"/>
